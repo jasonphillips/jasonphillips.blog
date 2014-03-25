@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Jekyll via Yeoman</title>
+    <base href="/">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../_bower_components/normalize-css/normalize.css" />
+    <link rel="stylesheet" href="../_bower_components/foundation/css/foundation.css" />
+    <!-- endbower -->
+    <!-- build:css({app,.tmp}) /css/main.css -->
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/surname.css">
+    <!-- endbuild -->
+
+    <!-- build:js({app,.tmp}) /js/head-scripts.js -->
+    <!-- endbuild -->
+    <!-- bower:js -->
+    <script src="../_bower_components/modernizr/modernizr.js"></script>
+    <script src="../_bower_components/jquery/dist/jquery.js"></script>
+    <script src="../_bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="../_bower_components/jquery.cookie/jquery.cookie.js"></script>
+    <script src="../_bower_components/foundation/js/foundation.js"></script>
+    <!-- endbower -->
+
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+      <div id="sidebar">
+        <div class="mepic">
+  <img src="/img/surnameHead.png"/>
+  <div>| >< |</div>
+</div>
+<a href="/">
+<h4 class="surname">jason<br/> .<span>surname</span>Phillips</h4>
+</a>
+<p>
+  <code>web / data / cobbling</code>
+</p>
+<a href="https://twitter.com/jsurname1">
+  <img src="/img/twitter2.png"/>
+</a>
+<a href="https://github.com/jasonphillips">
+  <img src="/img/github.png"/>
+</a>
+<div class="clear"> </div>
+      </div>
+      <div id="mainbar">
+        <article class="post">
+<h2 class='title'>
+    Jekyll via Yeoman
+</h2>
+<div class="post-date">24 Mar 2014</div>
+<p>I’ve been using <a href="http://yeoman.io/">Yeoman</a> lately for SPA projects in <a href="http://angularjs.org/">Angular.js</a>, but have typically favored <a href="http://middlemanapp.com/">Middleman</a> for the generation of static sites that contain multiple pages. Middlman’s simple integration of the <code>Data</code> folder and <code>proxy</code> declarations offers a compellingly clean way to build a set of pages from a <strong>YAML</strong> table of contents, which has allowed non-technical users in my office to broaden their scope from editing basic markdown content to now updating sitemap and navigation trees easily. It’s remarkable how quickly a markup-free syntax can overcome the usual barriers that prevent turning over the keys to our content to the right hands.</p>
+
+<p>But for my own blogging purposes, I’m finally jumping into <a href="http://jekyllrb.com">Jekyll</a> for its more blog-centric features, and Yeoman has made the process a pleasure with a host of convenient grunt tasks ready to go.</p>
+
+<p>But the combination of these generator tools was admittedly not an intuitive match. Isn’t Yeoman a generator all of its own that should be categorized alongside Middleman and Jekyll, and isn’t it therefore a bit odd to wrap one generator (Jekyll in this case) with another?</p>
+
+<p>That being said, the great benefits of Yeoman in this case are the quicker start enabled by scaffolding and the generation of a Gruntfile that contains the vast majority of handy functions you’d end up handling by other means. And with a bit of <a href="https://github.com/stephenplusplus/grunt-bower-install">grunt-bower-install</a> thrown into the mix, I can finally add front-end packages in seconds on the command line and see them automatically populated into my templates. Very convenient.</p>
+
+<p>The Gruntfile additions required in order to add bower to your standard Yeoman-scaffolded Jekyll blog are quick. In your <code>config</code> section:</p>
+<div class='highlight'><pre><code class='ruby'>    <span class='ss'>bowerInstall</span><span class='p'>:</span> <span class='p'>{</span>
+      <span class='ss'>target</span><span class='p'>:</span> <span class='p'>{</span>
+        <span class='ss'>src</span><span class='p'>:</span> <span class='s1'>&#39;&lt;%= yeoman.app %&gt;/_layouts/default.html&#39;</span><span class='p'>,</span>
+        <span class='ss'>ignorePath</span><span class='p'>:</span> <span class='s1'>&#39;&lt;%= yeoman.app %&gt;/&#39;</span>
+      <span class='p'>}</span>
+    <span class='p'>},</span>
+</code></pre></div>
+<p>Then be sure to add <code>bowerInstall</code> to your relevant grunt tasks (serve, build) near the top of the list. Lastly, just insert the wrapping comments into your chosen location in the main template.</p>
+<div class='highlight'><pre><code class='html'><span class='c'>&lt;!-- somewhere in &lt;head&gt; --&gt;</span>
+    <span class='c'>&lt;!-- bower:css --&gt;</span>
+    <span class='c'>&lt;!-- endbower --&gt;</span>
+  
+    <span class='c'>&lt;!-- bower:js --&gt;</span>
+    <span class='c'>&lt;!-- endbower --&gt;</span>
+</code></pre></div>
+<p>These will be filled with the relevant pieces of any bower packages installed. Having worked with Middleman and its Ruby-based methods of automating asset management (Sprockets-based) at length, I’m somewhat pleasantly surprised by how easily Grunt tasks can be made to accomplish the same goal, leaving the Ruby site generator to stick to what it handles best, and avoiding the need for complex interaction with Rake.</p>
+</article>
+
+
+<h3 class="comments">#comments</h3>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'jsurname'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+      </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script>window.jQuery || document.write('<script src="/_bower_components/jquery.js"><\/script>')</script>
+<!-- build:js({app,.tmp}) /js/script.js -->
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
+<!-- endbuild -->
+
+
+  </body>
+</html>

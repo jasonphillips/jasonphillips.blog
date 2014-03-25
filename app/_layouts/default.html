@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ page.title }}</title>
+    <base href="/">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../_bower_components/normalize-css/normalize.css" />
+    <link rel="stylesheet" href="../_bower_components/foundation/css/foundation.css" />
+    <!-- endbower -->
+    <!-- build:css({app,.tmp}) /css/main.css -->
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/surname.css">
+    <!-- endbuild -->
+
+    <!-- build:js({app,.tmp}) /js/head-scripts.js -->
+    <!-- endbuild -->
+    <!-- bower:js -->
+    <script src="../_bower_components/modernizr/modernizr.js"></script>
+    <script src="../_bower_components/jquery/dist/jquery.js"></script>
+    <script src="../_bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="../_bower_components/jquery.cookie/jquery.cookie.js"></script>
+    <script src="../_bower_components/foundation/js/foundation.js"></script>
+    <!-- endbower -->
+
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+      <div id="sidebar">
+        {% include sidebar.html %}
+      </div>
+      <div id="mainbar">
+        {{ content }}
+      </div>
+
+    {% include scripts.html %}
+
+  </body>
+</html>

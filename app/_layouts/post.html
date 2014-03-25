@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<article class="post">
+<h2 class='title'>
+    {{ page.title }}
+</h2>
+<div class="post-date">{{ page.date | date_to_string }}</div>
+{{ content }}
+</article>
+
+{% if page.comments %}
+<h3 class="comments">#comments</h3>
+{% include comments.html %}
+{% endif %}
