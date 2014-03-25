@@ -6,7 +6,7 @@ categories: jekyll update
 comments: true
 ---
 
-I've been using [Yeoman][yeoman] lately for SPA projects in [Angular.js][angular], but have typically favored [Middleman][middleman] for the generation of static sites that contain multiple pages. Middlman's simple integration of the `Data` folder and `proxy` declarations offers a compellingly clean way to build a set of pages from a **YAML** table of contents, which has allowed non-technical users in my office to broaden their scope from editing basic markdown content to now updating sitemap and navigation trees easily. It's remarkable how quickly a markup-free syntax can overcome the usual barriers that prevent turning over the keys to our content to the right hands. 
+I've been using [Yeoman][yeoman] lately for SPA projects in [Angular.js][angular], but have typically favored [Middleman][middleman] for the generation of static sites that contain multiple pages. Middleman's simple integration of the `Data` folder and `proxy` declarations offers a compellingly clean way to build a set of pages from a **YAML** table of contents, which has allowed non-technical users in my office to broaden their scope from editing basic markdown content to now updating sitemap and navigation trees easily. It's remarkable how quickly a markup-free syntax can overcome the usual barriers that prevent turning over the keys to our content to the right hands. 
 
 But for my own blogging purposes, I'm finally jumping into [Jekyll][jekyll] for its more blog-centric features, and Yeoman has made the process a pleasure with a host of convenient grunt tasks ready to go. 
 
@@ -25,15 +25,20 @@ The Gruntfile additions required in order to add bower to your standard Yeoman-s
     },
 {% endhighlight %}
 
-Then be sure to add `bowerInstall` to your relevant grunt tasks (serve, build) near the top of the list. Lastly, just insert the wrapping comments into your chosen location in the main template.
+Then be sure to add `bowerInstall` to your relevant grunt tasks (serve, build) near the top of the list. Lastly, just insert the wrapping comments inside the existing `build:css` and `build:js` comments in the head.
 
 {% highlight html %}
-<!-- somewhere in <head> -->
+    <!-- build:css({app,.tmp}) /css/main.css -->
     <!-- bower:css -->
     <!-- endbower -->
+      ...
+    <!-- endbuild -->
   
+    <!-- build:js({app,.tmp}) /js/head-scripts.js -->
     <!-- bower:js -->
     <!-- endbower -->
+    ...
+    <!-- endbuild -->
 {% endhighlight %}
 
 These will be filled with the relevant pieces of any bower packages installed. Having worked with Middleman and its Ruby-based methods of automating asset management (Sprockets-based) at length, I'm somewhat pleasantly surprised by how easily Grunt tasks can be made to accomplish the same goal, leaving the Ruby site generator to stick to what it handles best, and avoiding the need for complex interaction with Rake.

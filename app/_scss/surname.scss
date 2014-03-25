@@ -1,13 +1,18 @@
-body { padding: 0; margin: 0; }
+body { 
+  padding: 0; 
+  margin: 0; 
+}
 a { color: #005c7a; }
 .clear { clear: both; }
+.clear-right { clear: right; }
 #sidebar {
   background-color: #6d695c;
   background-image:
-  repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
-  repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
-  linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
-  linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+    repeating-linear-gradient(120deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px),
+    linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+    linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+  background-image: -webkit-repeating-linear-gradient(-30deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px), -webkit-repeating-linear-gradient(30deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 60px), -webkit-linear-gradient(30deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)), -webkit-linear-gradient(-30deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
   background-size: 70px 120px;
   text-align: right;
   padding-right: 1em;
@@ -40,9 +45,14 @@ a { color: #005c7a; }
   p {
     opacity: .8;
     code {
+      float: right;
+      width: 13em;
       background-color: white;
       border-radius: 5px;
-      padding: .5em;
+      font-size: 1em;
+      white-space: nowrap;
+      padding: .2em;
+      margin-bottom: .5em;
     }
   }
   .surname {
@@ -58,9 +68,11 @@ a { color: #005c7a; }
     font-size: 2em;
   }
 }
+
 #mainbar {
   padding: 1em;
 }
+
 @media screen and (min-width:40.063em) { 
   #sidebar { 
     padding: 0;
@@ -78,6 +90,12 @@ a { color: #005c7a; }
         color: black;
         font-size: 2em;
       }
+    }
+    p code {
+      background-color: white;
+      border-radius: 5px;
+      font-size: 1em;
+      white-space: nowrap;
     }
   }
   #mainbar {
